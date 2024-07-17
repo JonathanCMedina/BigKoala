@@ -1,7 +1,7 @@
 # BigKoala
 
-Testing out issue pushing from local branch
+Project Description:
+{Insert a description about the project}
 
-
-
-Testing branching
+How to run the application:
+pip install pymongo 
