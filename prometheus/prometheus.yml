@@ -1,0 +1,13 @@
+global:
+  scrape_interval:     15s # How frequently to scrape targets by default.
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']  # Target where Prometheus itself exposes metrics.
+
+  - job_name: 'mongodb'
+    static_configs:
+      - targets: ['mongodb:27017']  # Replace 'mongodb' with your MongoDB service name from Docker Compose.
+
+  # Add additional scrape configurations for other services as needed.
