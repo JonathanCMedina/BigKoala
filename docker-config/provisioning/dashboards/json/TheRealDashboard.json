@@ -24,595 +24,14 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "cdsnd1831wum8c"
-      },
-      "description": "To analyze incidents based on the assignment group or individual",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "id": 8,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "frameIndex": 2,
-        "showHeader": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "-- By Assignment Group\r\nSELECT \r\n    assignment_group, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    assignment_group\r\nORDER BY \r\n    incident_count DESC;\r\n",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "key": "Q-ffa5835a-cb00-40d8-8fc6-4dcf9c2642b1-1",
-          "rawQuery": true,
-          "rawSql": "-- By Assigned To\r\nSELECT \r\n    assigned_to, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    assigned_to\r\nORDER BY \r\n    incident_count DESC;\r\n",
-          "refId": "B",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "key": "Q-6d5cc26f-368d-4f7f-95be-4ad2494a46f3-2",
-          "rawQuery": true,
-          "rawSql": "-- Simple Test Query\r\nSELECT \r\n    COUNT(*) AS total_incidents\r\nFROM \r\n    incidents;\r\n",
-          "refId": "C",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Incident Assignment Analysis",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "mysql",
-        "uid": "cdsnd1831wum8c"
-      },
-      "description": "To visualize the frequency of incidents over different times of day or days of the week",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 20,
-        "w": 11,
-        "x": 12,
-        "y": 0
-      },
-      "id": 4,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "frameIndex": 0,
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": false,
-            "displayName": "incident_count"
-          }
-        ]
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT \r\n    HOUR(opened_at) AS hour_of_day, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    hour_of_day\r\nORDER BY \r\n    hour_of_day;\r\n",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "key": "Q-b14895a2-f564-4104-8e8a-b6765cd79b5e-5",
-          "rawQuery": true,
-          "rawSql": "SELECT \r\n    DAYNAME(opened_at) AS day_of_week, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    day_of_week\r\nORDER BY \r\n    FIELD(day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');\r\n",
-          "refId": "B",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "key": "Q-5528c4bd-2458-4709-b770-b18bca36df57-2",
-          "rawQuery": true,
-          "rawSql": "SELECT \r\n    DAYOFWEEK(opened_at) AS day_of_week, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    DAYOFWEEK(opened_at)\r\nORDER BY \r\n    DAYOFWEEK(opened_at);\r\n",
-          "refId": "C",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Incident Heatmap",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "mysql",
-        "uid": "cdsnd1831wum8c"
-      },
-      "description": "To view incidents categorized by their categories",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 8
-      },
-      "id": 7,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT \r\n    category, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    category\r\nORDER BY \r\n    incident_count DESC;\r\n",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Incident Details by Category",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "mysql",
-        "uid": "cdsnd1831wum8c"
-      },
-      "description": "To get a breakdown of incidents by priority",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 16
-      },
-      "id": 6,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "11.1.0",
-      "targets": [
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT \r\n    priority, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    priority\r\nORDER BY \r\n    incident_count DESC;\r\n",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Incident Details by Priority",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "mysql",
-        "uid": "cdsnd1831wum8c"
-      },
-      "description": "To visualize trends over time, you can use a query like this to get incidents by day",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 24
-      },
-      "id": 5,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "dataset": "incident_event",
-          "datasource": {
-            "type": "mysql",
-            "uid": "cdsnd1831wum8c"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT \r\n    DATE(opened_at) AS date, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    date\r\nORDER BY \r\n    date;\r\n",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Trend Analysis",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "mysql",
-        "uid": "cdsnd1831wum8c"
+        "uid": "edsr5dllto1s0f"
       },
       "description": "To get the most recent incidents",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "continuous-YlRd"
+          },
           "custom": {
             "align": "auto",
             "cellOptions": {
@@ -625,7 +44,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -637,10 +57,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 12,
+        "w": 24,
         "x": 0,
-        "y": 32
+        "y": 0
       },
       "id": 1,
       "options": {
@@ -663,9 +83,10 @@
             "type": "mysql",
             "uid": "cdsnd1831wum8c"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "format": "table",
-          "rawSql": "SELECT number, incident_state, opened_at, closed_at, assigned_to, priority FROM incident_event.incidents ORDER BY opened_at DESC LIMIT 10 ",
+          "rawQuery": true,
+          "rawSql": "SELECT number AS incident_number, incident_state, opened_at, resolved_at, assigned_to, priority FROM incident_event.incidents ORDER BY opened_at DESC LIMIT 20 ",
           "refId": "A",
           "sql": {
             "columns": [
@@ -746,17 +167,126 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "cdsnd1831wum8c"
+        "uid": "edsr5dllto1s0f"
       },
-      "description": "To calculate the average resolution time for incidents",
+      "description": "To show incidents and whether they met SLA targets",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
           "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "inspect": false
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 3,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "colorByField": "resolution_time",
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cdsnd1831wum8c"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    number AS incident_number, \r\n    TIMESTAMPDIFF(MINUTE, opened_at, resolved_at) AS resolution_time\r\nFROM \r\n    incidents\r\nWHERE \r\n    incident_state = 'Closed'\r\nORDER BY \r\n    incident_number DESC\r\nLIMIT 15;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Resolution time (in minutes)",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edsr5dllto1s0f"
+      },
+      "description": "To get a breakdown of incidents by priority",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -770,7 +300,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -778,20 +309,23 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 40
+        "y": 22
       },
-      "id": 2,
+      "id": 6,
       "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "/.*/",
+          "values": true
         },
-        "showHeader": true
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
       "pluginVersion": "11.1.0",
       "targets": [
@@ -804,7 +338,92 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT \r\n    AVG(TIMESTAMPDIFF(MINUTE, opened_at, closed_at)) AS avg_resolution_time\r\nFROM \r\n    incidents\r\nWHERE \r\n    closed_at IS NOT NULL;",
+          "rawSql": "SELECT \r\n    priority, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    priority\r\nORDER BY \r\n    priority DESC;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Incident Count by Priority",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edsr5dllto1s0f"
+      },
+      "description": "To calculate the average resolution time for incidents ordered by priority levels ",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 22
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "/.*/",
+          "values": true
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 43
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cdsnd1831wum8c"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    priority,\r\n    AVG(TIMESTAMPDIFF(HOUR, opened_at, resolved_at)) AS avg_resolution_time\r\nFROM \r\n    incidents\r\nWHERE \r\n    resolved_at IS NOT NULL \r\n    AND opened_at IS NOT NULL\r\n    AND active = 'Closed'\r\nGROUP BY \r\n    priority\r\nORDER BY \r\n    priority;\r\n",
           "refId": "A",
           "sql": {
             "columns": [
@@ -826,15 +445,503 @@
           "table": "incidents"
         }
       ],
-      "title": "Incident Resolution Time",
+      "title": "Incident Resolution Time (in hours)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edsr5dllto1s0f"
+      },
+      "description": "This bar char shows the incidents per the hour of the day spanning the three months from our data",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 9,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "colorByField": "incident_count",
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edsr5dllto1s0f"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    DATE_FORMAT(opened_at, '%H:00') AS hour_of_day, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    hour_of_day\r\nORDER BY \r\n    hour_of_day;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Incidents by Hour of Day",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edsr5dllto1s0f"
+      },
+      "description": "To visualize trends over time, you can use a query like this to get incidents by day",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 39
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cdsnd1831wum8c"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    DATE(opened_at) AS date, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    date\r\nORDER BY \r\n    date;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Trend Analysis",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edsr5dllto1s0f"
+      },
+      "description": "To visualize the frequency of incidents over different days of the week",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 39
+      },
+      "id": 4,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "colorByField": "incident_count",
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cdsnd1831wum8c"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "key": "Q-b14895a2-f564-4104-8e8a-b6765cd79b5e-5",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    DAYNAME(opened_at) AS day_of_week, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    day_of_week\r\nORDER BY \r\n    FIELD(day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');\r\n",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Incidents by Day of the Week",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edsr5dllto1s0f"
+      },
+      "description": "To analyze incidents based on the assigned group to resolve the incident",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 48
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cdsnd1831wum8c"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    assignment_group AS incident_group, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nWHERE \r\n    assignment_group IS NOT NULL \r\n    AND assignment_group != ''\r\n    AND assignment_group != '?'\r\nGROUP BY \r\n    assignment_group\r\nORDER BY \r\n    incident_count DESC;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cdsnd1831wum8c"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": true,
+          "key": "Q-ffa5835a-cb00-40d8-8fc6-4dcf9c2642b1-1",
+          "rawQuery": true,
+          "rawSql": "-- By Assigned To\r\nSELECT \r\n    assigned_to, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    assigned_to\r\nORDER BY \r\n    incident_count DESC;\r\n",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "incident_event",
+          "datasource": {
+            "type": "mysql",
+            "uid": "cdsnd1831wum8c"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": true,
+          "key": "Q-6d5cc26f-368d-4f7f-95be-4ad2494a46f3-2",
+          "rawQuery": true,
+          "rawSql": "-- Simple Test Query\r\nSELECT \r\n    COUNT(*) AS total_incidents\r\nFROM \r\n    incidents;\r\n",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Incident Count per Assigned Group",
       "type": "table"
     },
     {
       "datasource": {
         "type": "mysql",
-        "uid": "cdsnd1831wum8c"
+        "uid": "edsr5dllto1s0f"
       },
-      "description": "To show incidents and whether they met SLA targets",
+      "description": "To view incidents categorized by their mnemonic group",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -861,12 +968,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 12,
-        "x": 0,
+        "x": 12,
         "y": 48
       },
-      "id": 3,
+      "id": 7,
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -890,7 +997,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT \r\n    number, \r\n    TIMESTAMPDIFF(MINUTE, opened_at, closed_at) AS resolution_time, \r\n    made_sla\r\nFROM \r\n    incidents\r\nWHERE \r\n    closed_at IS NOT NULL;\r\n",
+          "rawSql": "SELECT \r\n    category AS mnemonic, \r\n    COUNT(*) AS incident_count\r\nFROM \r\n    incidents\r\nGROUP BY \r\n    category\r\nORDER BY \r\n    incident_count DESC;\r\n",
           "refId": "A",
           "sql": {
             "columns": [
@@ -911,23 +1018,24 @@
           }
         }
       ],
-      "title": "SLA Compliance Table ",
+      "title": "Incident Count per Mnemonic Group",
       "type": "table"
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "2024-07-23T17:05:29.570Z",
-    "to": "2024-07-23T21:05:29.570Z"
+    "from": "now-1h",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Example1",
+  "title": "BigKoala Dashboard",
   "uid": "cdsnddhxqtc00d",
-  "version": 13,
+  "version": 28,
   "weekStart": ""
 }
