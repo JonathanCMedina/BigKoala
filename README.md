@@ -61,16 +61,6 @@ In your machine's terminal (Zshell, Powershell, Bash, etc.) type
 5. You should be able to remake the connections.
 6. If existing connections in the Grafana Data Source tab still exist, delete them then retry after rebooting Docker.
 
-## Importing the Dashboard 
-1. On the left, click the **Dashboards** menu
-2. On the top right, click the **New** dropdown button
-3. Click **Import**
-4. Click **Update dashboard JSON file**
-5. Within the directory BigKoala > docker-config on your local computer, upload the *TheRealDashboard* JSON file.
-   Alternatively, you can copy/paste the *TheRealDashboard* JSON file into the textbox under **Import via dashboard JSON model**
-6. Rename the dashboard to *incident_event*
-7. Click the **Import** button
-
 ### If your dashboard's grid is showing that there is No data, follow the steps below:
 1. Hover over the top right corner of one of the grids (for example, *Incident Assignment Analysis*)
 2. Click the **vertical ellipses** (three dots stacked vertically) menu button
