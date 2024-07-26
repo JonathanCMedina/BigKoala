@@ -18,13 +18,12 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To get the most recent incidents",
       "fieldConfig": {
@@ -167,7 +166,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To show incidents and whether they met SLA targets",
       "fieldConfig": {
@@ -280,7 +279,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To get a breakdown of incidents by priority",
       "fieldConfig": {
@@ -293,11 +292,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 50
               }
             ]
           },
@@ -315,7 +315,7 @@
       "options": {
         "colorMode": "background",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
@@ -365,17 +365,19 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To calculate the average resolution time for incidents ordered by priority levels ",
       "fieldConfig": {
         "defaults": {
+          "fieldMinMax": false,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -396,8 +398,8 @@
       "id": 2,
       "options": {
         "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
+        "graphMode": "none",
+        "justifyMode": "center",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
@@ -406,9 +408,7 @@
           "values": true
         },
         "showPercentChange": false,
-        "text": {
-          "valueSize": 43
-        },
+        "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
@@ -423,7 +423,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT \r\n    priority,\r\n    AVG(TIMESTAMPDIFF(HOUR, opened_at, resolved_at)) AS avg_resolution_time\r\nFROM \r\n    incidents\r\nWHERE \r\n    resolved_at IS NOT NULL \r\n    AND opened_at IS NOT NULL\r\n    AND active = 'Closed'\r\nGROUP BY \r\n    priority\r\nORDER BY \r\n    priority;\r\n",
+          "rawSql": "SELECT \r\n    priority,\r\n    AVG(TIMESTAMPDIFF(HOUR, opened_at, resolved_at)) AS avg_resolution_time\r\nFROM \r\n    incidents\r\nWHERE \r\n    resolved_at IS NOT NULL \r\n    AND opened_at IS NOT NULL\r\n    AND active = 'Closed'\r\nGROUP BY \r\n    priority\r\nORDER BY \r\n    priority desc;\r\n",
           "refId": "A",
           "sql": {
             "columns": [
@@ -451,7 +451,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "This bar char shows the incidents per the hour of the day spanning the three months from our data",
       "fieldConfig": {
@@ -485,7 +485,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -563,7 +564,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To visualize trends over time, you can use a query like this to get incidents by day",
       "fieldConfig": {
@@ -608,7 +609,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -675,7 +677,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To visualize the frequency of incidents over different days of the week",
       "fieldConfig": {
@@ -709,7 +711,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -788,7 +791,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To analyze incidents based on the assigned group to resolve the incident",
       "fieldConfig": {
@@ -808,7 +811,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -939,7 +943,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "edsr5dllto1s0f"
+        "uid": "P211906C1C32DB77E"
       },
       "description": "To view incidents categorized by their mnemonic group",
       "fieldConfig": {
@@ -956,7 +960,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1029,13 +1034,13 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
-    "to": "now"
+    "from": "2016-02-28T07:00:00.000Z",
+    "to": "2016-05-14T06:59:59.000Z"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "BigKoala Dashboard",
   "uid": "cdsnddhxqtc00d",
-  "version": 28,
+  "version": 1,
   "weekStart": ""
 }
