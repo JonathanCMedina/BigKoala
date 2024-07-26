@@ -14,7 +14,7 @@ BigKoala was created to simulate an Incident Management application through the 
 
 BigKoala utilizes Kafka producers and consumers to retrieve and filter information from the incident_event_log.csv file into a MySQL database. The log is from Kaggle (https://www.kaggle.com/datasets/vipulshinde/incident-response-log?resource=download).
 
-Depending on the machine this application is being ran on, processing all 120k lines with 0.1s delay could take approximately 4 hours (from the developers' general estimations). 
+Depending on the machine this application is being ran on, processing all 120k lines with 0.1s delay could take approximately 5 hours (from the developers' general estimations). 
 
 This project is a full backend application. The project is primarily written with Python code. 
 
