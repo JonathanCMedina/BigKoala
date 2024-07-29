@@ -45,9 +45,18 @@ Pip
 Git
   https://git-scm.com/downloads
 
+Zookeeper 
+`pip install zookeeper` in your terminal
+
+For M1 Macs:
+If you're running into the "no matching manifest for linux/arm64/v8 in the manifest list entries" issue run:
+* `docker pull --platform linux/x86_64 mysql`
+
+* 7/29/24: If this still isn't running on M1 Macs, a fix will be submitted up for 8/1/24. 
+
 ## How to fork BigKoala:
 In your machine's terminal (Zshell, Powershell, Bash, etc.) type 
-`git fork https://github.com/JonathanCMedina/BigKoala.git`
+`git clone https://github.com/JonathanCMedina/BigKoala.git`
 
 ## How to run the application: 
 1. Turn on Docker Desktop (login not required)
